@@ -1,0 +1,94 @@
+{
+  "admin": {
+    "disabled": true
+  },
+  "logging": {
+    "sink": {
+      "writer": {
+        "output": "discard"
+      }
+    },
+    "logs": {
+      "default": {
+        "writer": {
+          "output": "discard"
+        }
+      }
+    }
+  },
+  "apps": {
+    "http": {
+      "servers": {
+        "srv0": {
+          "listen": [
+            ":443"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "auth_pass_deprecated": "369369",
+                          "auth_user_deprecated": "amrom",
+                          "handler": "forward_proxy",
+                          "hide_ip": true,
+                          "hide_via": true,
+                          "probe_resistance": {}
+                        }
+                      ]
+                    },
+                    {
+                      "match": [
+                        {
+                          "host": [
+                            "www.amrom.cf"
+                          ]
+                        }
+                      ],
+                      "handle": [
+                        {
+                          "handler": "file_server",
+                          "root": "/var/www/www.amrom.cf",
+                          "index_names": [
+                            "index.html"
+                          ]
+                        }
+                      ],
+                      "terminal": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "tls_connection_policies": [
+            {
+              "match": {
+                "sni": [
+                  "www.amrom.cf"
+                ]
+              }
+            }
+          ],
+          "automatic_https": {
+            "disable": true
+          }
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "load_files": [
+          {
+            "certificate": "/root/.acme.sh/www.amrom.cf_ecc/www.amrom.cf.cer",
+            "key": "/root/.acme.sh/www.amrom.cf_ecc/www.amrom.cf.key"
+          }
+        ]
+      }
+    }
+  }
+}
