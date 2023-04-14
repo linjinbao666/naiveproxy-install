@@ -1,0 +1,13 @@
+[Unit]
+Description=Caddy service
+ConditionFileIsExecutable=/usr/local/bin/caddy
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+LimitNOFILE=102400
+ExecStart=/usr/local/bin/caddy run --config /etc/caddy/caddy.json
+Restart=always
+RestartSec=120
+EnvironmentFile=-/etc/sysconfig/caddy
+[Install]
+WantedBy=multi-user.target
