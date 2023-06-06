@@ -1,0 +1,12 @@
+[Unit]
+Description=naive service
+ConditionFileIsExecutable=/usr/local/bin/naive
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+LimitNOFILE=102400
+ExecStart=/usr/local/bin/naive /etc/naive/config.json
+Restart=always
+RestartSec=120
+[Install]
+WantedBy=multi-user.target

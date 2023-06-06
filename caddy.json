@@ -45,14 +45,14 @@
                       "match": [
                         {
                           "host": [
-                            "www.amrom.cf"
+                            "amrom.cf"
                           ]
                         }
                       ],
                       "handle": [
                         {
                           "handler": "file_server",
-                          "root": "/var/www/www.amrom.cf",
+                          "root": "/var/www/amrom.cf",
                           "index_names": [
                             "index.html"
                           ]
@@ -69,7 +69,7 @@
             {
               "match": {
                 "sni": [
-                  "www.amrom.cf"
+                  "amrom.cf"
                 ]
               }
             }
@@ -84,8 +84,8 @@
       "certificates": {
         "load_files": [
           {
-            "certificate": "/root/.acme.sh/www.amrom.cf_ecc/www.amrom.cf.cer",
-            "key": "/root/.acme.sh/www.amrom.cf_ecc/www.amrom.cf.key"
+            "certificate": "/root/.acme.sh/amrom.cf_ecc/amrom.cf.cer",
+            "key": "/root/.acme.sh/amrom.cf_ecc/amrom.cf.key"
           }
         ]
       }

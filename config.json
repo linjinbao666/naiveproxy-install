@@ -1,5 +1,5 @@
 {
   "listen": "socks://127.0.0.1:1080",
-  "proxy": "https://amrom:369369@www.amrom.cf",
+  "proxy": "https://amrom:369369@amrom.cf",
   "log": "/var/log/naive/naive.log"
 }
